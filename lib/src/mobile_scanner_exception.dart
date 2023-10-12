@@ -1,4 +1,6 @@
-import 'package:mobile_scanner/src/enums/mobile_scanner_error_code.dart';
+import 'package:flutter/services.dart';
+
+import 'enums/mobile_scanner_error_code.dart';
 
 /// This class represents an exception thrown by the mobile scanner.
 class MobileScannerException implements Exception {
@@ -18,6 +20,7 @@ class MobileScannerException implements Exception {
     if (errorDetails != null && errorDetails?.message != null) {
       return "MobileScannerException: code ${errorCode.name}, message: ${errorDetails?.message}";
     }
+
     return "MobileScannerException: ${errorCode.name}";
   }
 }
