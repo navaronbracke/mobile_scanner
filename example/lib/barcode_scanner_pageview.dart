@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:mobile_scanner_example/scanner_error_widget.dart';
+import 'scanner_error_widget.dart';
 
 class BarcodeScannerPageView extends StatefulWidget {
   const BarcodeScannerPageView({Key? key}) : super(key: key);

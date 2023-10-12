@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_scanner_example/barcode_list_scanner_controller.dart';
-import 'package:mobile_scanner_example/barcode_scanner_controller.dart';
-import 'package:mobile_scanner_example/barcode_scanner_pageview.dart';
-import 'package:mobile_scanner_example/barcode_scanner_returning_image.dart';
-import 'package:mobile_scanner_example/barcode_scanner_window.dart';
-import 'package:mobile_scanner_example/barcode_scanner_without_controller.dart';
-import 'package:mobile_scanner_example/barcode_scanner_zoom.dart';
+
+import 'barcode_list_scanner_controller.dart';
+import 'barcode_scanner_controller.dart';
+import 'barcode_scanner_pageview.dart';
+import 'barcode_scanner_returning_image.dart';
+import 'barcode_scanner_window.dart';
+import 'barcode_scanner_without_controller.dart';
+import 'barcode_scanner_zoom.dart';
 
 void main() => runApp(const MaterialApp(home: MyHome()));
 
@@ -15,7 +16,7 @@ class MyHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Flutter Demo Home Page')),
+      appBar: AppBar(title: const Text('Mobile Scanner Example')),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
