@@ -1,3 +1,8 @@
+## NEXT
+* Migrate to `flutter_lints` for linting in the plugin
+* Migrate the plugin to `plugin_platform_interface`
+* Fixes Cocoapods versioning errors due to an old version in the podspec.
+
 ## 3.4.1
 Change MediaQuery.sizeOf(context) to of(context).size for backwards compatibility
 
