@@ -9,3 +9,10 @@ export 'src/mobile_scanner_exception.dart';
 export 'src/objects/barcode.dart';
 export 'src/objects/barcode_capture.dart';
 export 'src/objects/mobile_scanner_arguments.dart';
+
+import 'mobile_scanner_platform_interface.dart';
+
+class MobileScanner {
+  // TODO: delegate to platform interface instance
+  // MobileScannerPlatform.instance.foo();
+}
