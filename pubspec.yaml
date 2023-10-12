@@ -13,12 +13,12 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
   js: ^0.6.3
+  plugin_platform_interface: ^2.0.2  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   lint: ">=1.10.0 <3.0.0"
-  #flutter_lints: ^2.0.3
 
 flutter:
   plugin:
@@ -31,5 +31,5 @@ flutter:
       macos:
         pluginClass: MobileScannerPlugin
       web:
-        pluginClass: MobileScannerWebPlugin
-        fileName: mobile_scanner_web_plugin.dart
+        pluginClass: MobileScannerWeb
+        fileName: mobile_scanner_web.dart
