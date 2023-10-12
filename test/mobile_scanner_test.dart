@@ -1,26 +1,28 @@
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:mobile_scanner/mobile_scanner_platform_interface.dart';
+import 'package:mobile_scanner/mobile_scanner_method_channel.dart';
+import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+
+class MockMobileScannerPlatform with MockPlatformInterfaceMixin implements MobileScannerPlatform {
+  // TODO: implement platform interface methods for the mock
+}
+
+// TODO: test default instance for web
 
 void main() {
-  const MethodChannel channel = MethodChannel('mobile_scanner');
+  final MobileScannerPlatform initialPlatform = MobileScannerPlatform.instance;
 
-  TestWidgetsFlutterBinding.ensureInitialized();
-
-  setUp(() {
-    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
-        .setMockMethodCallHandler(
-      channel,
-      (MethodCall methodCall) async {
-        return '42';
-      },
-    );
+  test('$MethodChannelMobileScanner is the default instance', () {
+    expect(initialPlatform, isInstanceOf<MethodChannelMobileScanner>());
   });
 
-  tearDown(() {
-    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
-        .setMockMethodCallHandler(
-      channel,
-      null,
-    );
+  // TODO: this test is broken anyway
+  test('getPlatformVersion', () async {
+    MobileScanner mobileScannerPlugin = MobileScanner();
+    MockMobileScannerPlatform fakePlatform = MockMobileScannerPlatform();
+    MobileScannerPlatform.instance = fakePlatform;
+
+    expect(await mobileScannerPlugin.getPlatformVersion(), '42');
   });
 }
