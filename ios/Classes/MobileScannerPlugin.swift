@@ -15,7 +15,7 @@ public class MobileScannerPlugin: NSObject, FlutterPlugin {
     static var scanWindow: [CGFloat]?
     
     private static func isBarcodeInScanWindow(barcode: Barcode, imageSize: CGSize) -> Bool {
-        let scanwindow = SwiftMobileScannerPlugin.scanWindow!
+        let scanwindow = MobileScannerPlugin.scanWindow!
         let barcodeminX = barcode.cornerPoints![0].cgPointValue.x
         let barcodeminY = barcode.cornerPoints![1].cgPointValue.y
         
@@ -38,8 +38,8 @@ public class MobileScannerPlugin: NSObject, FlutterPlugin {
         self.mobileScanner = MobileScanner(registry: registry, mobileScannerCallback: { barcodes, error, image in
             if barcodes != nil {
                 let barcodesMap: [Any?] = barcodes!.compactMap { barcode in
-                    if (SwiftMobileScannerPlugin.scanWindow != nil) {
-                        if (SwiftMobileScannerPlugin.isBarcodeInScanWindow(barcode: barcode, imageSize: image.size)) {
+                    if (MobileScannerPlugin.scanWindow != nil) {
+                        if (MobileScannerPlugin.isBarcodeInScanWindow(barcode: barcode, imageSize: image.size)) {
                             return barcode.data
                         } else {
                             return nil
@@ -165,7 +165,7 @@ public class MobileScannerPlugin: NSObject, FlutterPlugin {
     
     /// Toggles the zoomScale
     private func setScale(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
-        var scale = call.arguments as? CGFloat
+        let scale = call.arguments as? CGFloat
         if (scale == nil) {
             result(FlutterError(code: "MobileScanner",
                                 message: "You must provide a scale when calling setScale!",
@@ -213,7 +213,7 @@ public class MobileScannerPlugin: NSObject, FlutterPlugin {
     /// Toggles the torch
     func updateScanWindow(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
         let scanWindowData: Array? = (call.arguments as? [String: Any])?["rect"] as? [CGFloat]
-        SwiftMobileScannerPlugin.scanWindow = scanWindowData
+        MobileScannerPlugin.scanWindow = scanWindowData
 
         result(nil)
     }
