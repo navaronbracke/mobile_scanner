@@ -24,7 +24,8 @@ abstract class MobileScannerPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  // TODO: define platform interface methods
-  // - controller specific methods
-  // - create widget method
+  /// Releases the resources of this mobile scanner.
+  Future<void> dispose() {
+    throw UnimplementedError('dispose() has not been implemented.');
+  }
 }
