@@ -1,7 +1,12 @@
 ## NEXT
-* Migrate to `flutter_lints` for linting in the plugin
-* Migrate the plugin to `plugin_platform_interface`
+Fixes:
 * Fixes Cocoapods versioning errors due to an old version in the podspec.
+
+Breaking changes:
+* Use `Object?` instead of `dynamic` for the `raw` field of `BarcodeCapture`.
+
+Improvements:
+* Migrate the plugin to `plugin_platform_interface`.
 
 ## 3.4.1
 Change MediaQuery.sizeOf(context) to of(context).size for backwards compatibility
