@@ -501,24 +501,6 @@ class WiFi {
         password = data['password'] as String?;
 }
 
-/// Address type constants.
-enum AddressType {
-  /// Unknown address type.
-  ///
-  /// Constant Value: 0
-  unknown,
-
-  /// Work address.
-  ///
-  /// Constant Value: 1
-  work,
-
-  /// Home address.
-  ///
-  /// Constant Value: 2
-  home,
-}
-
 /// Barcode value type constants
 enum BarcodeType {
   /// Barcode value type unknown, which indicates the current version of SDK cannot recognize the structure of the barcode. Developers can inspect the raw value instead.

@@ -1,3 +1,4 @@
+/// This enum defines the different barcode formats.
 enum BarcodeFormat {
   /// A barcode format that represents all unknown formats.
   unknown(-1),
