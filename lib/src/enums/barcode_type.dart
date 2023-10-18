@@ -41,6 +41,38 @@ enum BarcodeType {
 
   const BarcodeType(this.rawValue);
 
+  factory BarcodeType.fromRawValue(int value) {
+    switch (value) {
+      case 1:
+        return BarcodeType.contactInfo;
+      case 2:
+        return BarcodeType.email;
+      case 3:
+        return BarcodeType.isbn;
+      case 4:
+        return BarcodeType.phone;
+      case 5:
+        return BarcodeType.product;
+      case 6:
+        return BarcodeType.sms;
+      case 7:
+        return BarcodeType.text;
+      case 8:
+        return BarcodeType.url;
+      case 9:
+        return BarcodeType.wifi;
+      case 10:
+        return BarcodeType.geo;
+      case 11:
+        return BarcodeType.calendarEvent;
+      case 12:
+        return BarcodeType.driverLicense;
+      case 0:
+      default:
+        return BarcodeType.unknown;
+    }
+  }
+
   /// The raw barcode type value.
   final int rawValue;
 }
