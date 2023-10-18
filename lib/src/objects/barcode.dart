@@ -440,21 +440,3 @@ class Phone {
       : number = data['number'] as String?,
         type = PhoneType.values[data['type'] as int];
 }
-
-/// A sms message from a 'SMS:' or similar QRCode type.
-class SMS {
-  /// Gets the message content of the sms.
-  ///
-  /// Returns null if not available.
-  final String? message;
-
-  /// Gets the phone number of the sms.
-  ///
-  /// Returns null if not available.
-  final String? phoneNumber;
-
-  /// Create a [SMS] from native data.
-  SMS.fromNative(Map data)
-      : message = data['message'] as String?,
-        phoneNumber = data['phoneNumber'] as String?;
-}
