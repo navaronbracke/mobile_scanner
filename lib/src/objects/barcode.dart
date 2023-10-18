@@ -458,21 +458,3 @@ class SMS {
       : message = data['message'] as String?,
         phoneNumber = data['phoneNumber'] as String?;
 }
-
-/// A URL and title from a 'MEBKM:' or similar QRCode type.
-class UrlBookmark {
-  /// Gets the title of the bookmark.
-  ///
-  /// Returns null if not available.
-  final String? title;
-
-  /// Gets the url of the bookmark.
-  ///
-  /// Returns null if not available.
-  final String? url;
-
-  /// Create a [UrlBookmark] from native data.
-  UrlBookmark.fromNative(Map data)
-      : title = data['title'] as String?,
-        url = data['url'] as String?;
-}
