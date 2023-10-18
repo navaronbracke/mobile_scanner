@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:mobile_scanner/mobile_scanner_method_channel.dart';
+import 'package:mobile_scanner/src/method_channel/mobile_scanner_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 /// The platform interface for the `mobile_scanner` plugin.

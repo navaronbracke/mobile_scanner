@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-
-import 'package:mobile_scanner/mobile_scanner_platform_interface.dart';
+import 'package:mobile_scanner/src/mobile_scanner_platform_interface.dart';
 
 /// An implementation of [MobileScannerPlatform] that uses method channels.
 class MethodChannelMobileScanner extends MobileScannerPlatform {
