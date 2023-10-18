@@ -476,27 +476,3 @@ class UrlBookmark {
       : title = data['title'] as String?,
         url = data['url'] as String?;
 }
-
-/// A wifi network parameters from a 'WIFI:' or similar QRCode type.
-class WiFi {
-  /// Gets the encryption type of the WIFI.
-  ///
-  /// See all [EncryptionType].
-  final EncryptionType encryptionType;
-
-  /// Gets the ssid of the WIFI.
-  ///
-  /// Returns null if not available.
-  final String? ssid;
-
-  /// Gets the password of the WIFI.
-  ///
-  /// Returns null if not available.
-  final String? password;
-
-  /// Create a [WiFi] from native data.
-  WiFi.fromNative(Map data)
-      : encryptionType = EncryptionType.values[data['encryptionType'] as int],
-        ssid = data['ssid'] as String?,
-        password = data['password'] as String?;
-}

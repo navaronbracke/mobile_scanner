@@ -14,6 +14,20 @@ enum EncryptionType {
 
   const EncryptionType(this.rawValue);
 
+  factory EncryptionType.fromRawValue(int value) {
+    switch (value) {
+      case 1:
+        return EncryptionType.open;
+      case 2:
+        return EncryptionType.wpa;
+      case 3:
+        return EncryptionType.wep;
+      case 0:
+      default:
+        return EncryptionType.none;
+    }
+  }
+
   /// The raw value for the encryption type.
   final int rawValue;
 }
