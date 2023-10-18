@@ -218,21 +218,3 @@ class ContactInfo {
         title = data['title'] as String?,
         urls = List.unmodifiable((data['urls'] as List? ?? []).cast<String>());
 }
-
-/// An address.
-class Address {
-  /// Gets formatted address, multiple lines when appropriate. This field always contains at least one line.
-  final List<String> addressLines;
-
-  /// Gets type of the address.
-  ///
-  /// Returns null if not available.
-  final AddressType? type;
-
-  /// Create a [Address] from native data.
-  Address.fromNative(Map data)
-      : addressLines = List.unmodifiable(
-          (data['addressLines'] as List? ?? []).cast<String>(),
-        ),
-        type = AddressType.values[data['type'] as int];
-}
