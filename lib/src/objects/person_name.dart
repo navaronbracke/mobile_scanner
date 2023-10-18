@@ -12,11 +12,7 @@ class PersonName {
   });
 
   /// Create a [PersonName] from a map.
-  factory PersonName.fromMap(Map<Object?, Object?>? data) {
-    if (data == null) {
-      return const PersonName();
-    }
-
+  factory PersonName.fromMap(Map<Object?, Object?> data) {
     return PersonName(
       first: data['first'] as String?,
       middle: data['middle'] as String?,

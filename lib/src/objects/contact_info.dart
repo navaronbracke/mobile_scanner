@@ -18,11 +18,7 @@ class ContactInfo {
   });
 
   /// Create a new [ContactInfo] instance from a map.
-  factory ContactInfo.fromMap(Map<Object?, Object?>? data) {
-    if (data == null) {
-      return const ContactInfo();
-    }
-
+  factory ContactInfo.fromMap(Map<Object?, Object?> data) {
     final List<Object?>? addresses = data['addresses'] as List<Object?>?;
     final List<Object?>? emails = data['emails'] as List<Object?>?;
     final List<Object?>? phones = data['phones'] as List<Object?>?;

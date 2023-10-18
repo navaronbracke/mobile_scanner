@@ -19,11 +19,7 @@ class DriverLicense {
   });
 
   /// Create a [DriverLicense] from a map.
-  factory DriverLicense.fromMap(Map<Object?, Object?>? data) {
-    if (data == null) {
-      return const DriverLicense();
-    }
-
+  factory DriverLicense.fromMap(Map<Object?, Object?> data) {
     return DriverLicense(
       addressCity: data['addressCity'] as String?,
       addressState: data['addressState'] as String?,

@@ -12,11 +12,7 @@ class CalendarEvent {
   });
 
   /// Create a new [CalendarEvent] instance from a map.
-  factory CalendarEvent.fromMap(Map<Object?, Object?>? data) {
-    if (data == null) {
-      return const CalendarEvent();
-    }
-
+  factory CalendarEvent.fromMap(Map<Object?, Object?> data) {
     return CalendarEvent(
       description: data['description'] as String?,
       start: DateTime.tryParse(data['start'] as String? ?? ''),

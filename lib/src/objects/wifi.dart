@@ -11,11 +11,7 @@ class WiFi {
   });
 
   /// Construct a new [WiFi] instance from the given [data].
-  factory WiFi.fromMap(Map<Object?, Object?>? data) {
-    if (data == null) {
-      return const WiFi();
-    }
-
+  factory WiFi.fromMap(Map<Object?, Object?> data) {
     return WiFi(
       encryptionType: EncryptionType.fromRawValue(
         data['encryptionType'] as int? ?? 0,

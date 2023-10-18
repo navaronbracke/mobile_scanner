@@ -9,11 +9,7 @@ class PhoneNumber {
   });
 
   /// Create a [PhoneNumber] from the given [data].
-  factory PhoneNumber.fromMap(Map<Object?, Object?>? data) {
-    if (data == null) {
-      return const PhoneNumber();
-    }
-
+  factory PhoneNumber.fromMap(Map<Object?, Object?> data) {
     return PhoneNumber(
       number: data['number'] as String?,
       type: PhoneType.fromRawValue(data['type'] as int? ?? 0),

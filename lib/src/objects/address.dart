@@ -9,11 +9,7 @@ class Address {
   });
 
   /// Creates a new [Address] instance from a map.
-  factory Address.fromMap(Map<Object?, Object?>? data) {
-    if (data == null) {
-      return const Address();
-    }
-
+  factory Address.fromMap(Map<Object?, Object?> data) {
     final List<Object?>? addressLines = data['addressLines'] as List<Object?>?;
     final AddressType type = AddressType.fromRawValue(
       data['type'] as int? ?? 0,

@@ -11,11 +11,7 @@ class Email {
   });
 
   /// Construct an [Email] from the given [data].
-  factory Email.fromMap(Map<Object?, Object?>? data) {
-    if (data == null) {
-      return const Email();
-    }
-
+  factory Email.fromMap(Map<Object?, Object?> data) {
     return Email(
       address: data['address'] as String?,
       body: data['body'] as String?,
