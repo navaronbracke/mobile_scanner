@@ -407,17 +407,3 @@ class Email {
         subject = data['subject'] as String?,
         type = EmailType.values[data['type'] as int];
 }
-
-/// GPS coordinates from a 'GEO:' or similar QRCode type.
-class GeoPoint {
-  /// Gets the latitude.
-  final double? latitude;
-
-  /// Gets the longitude.
-  final double? longitude;
-
-  /// Create a [GeoPoint] from native data.
-  GeoPoint.fromNative(Map data)
-      : latitude = data['latitude'] as double?,
-        longitude = data['longitude'] as double?;
-}
