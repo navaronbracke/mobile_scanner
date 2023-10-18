@@ -2,25 +2,21 @@
 class GeoPoint {
   /// Construct a new [GeoPoint] instance.
   const GeoPoint({
-    this.latitude,
-    this.longitude,
+    this.latitude = 0.0,
+    this.longitude = 0.0,
   });
 
   /// Construct a [GeoPoint] from the given [data].
-  factory GeoPoint.fromMap(Map<Object?, Object?>? data) {
-    if (data == null) {
-      return const GeoPoint();
-    }
-
+  factory GeoPoint.fromMap(Map<Object?, Object?> data) {
     return GeoPoint(
-      latitude: data['latitude'] as double?,
-      longitude: data['longitude'] as double?,
+      latitude: data['latitude'] as double? ?? 0.0,
+      longitude: data['longitude'] as double? ?? 0.0,
     );
   }
 
   /// The latitude of the coordinate.
-  final double? latitude;
+  final double latitude;
 
   /// The longitude of the coordinate.
-  final double? longitude;
+  final double longitude;
 }
