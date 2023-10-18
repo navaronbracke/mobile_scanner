@@ -421,22 +421,3 @@ class GeoPoint {
       : latitude = data['latitude'] as double?,
         longitude = data['longitude'] as double?;
 }
-
-/// Phone number info.
-class Phone {
-  /// Gets phone number.
-  ///
-  /// Returns null if not available.
-  final String? number;
-
-  /// Gets type of the phone number.
-  ///
-  /// See also [PhoneType].
-  /// Returns null if not available.
-  final PhoneType? type;
-
-  /// Create a [Phone] from native data.
-  Phone.fromNative(Map data)
-      : number = data['number'] as String?,
-        type = PhoneType.values[data['type'] as int];
-}

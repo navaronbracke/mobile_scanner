@@ -17,6 +17,22 @@ enum PhoneType {
 
   const PhoneType(this.rawValue);
 
+  factory PhoneType.fromRawValue(int rawValue) {
+    switch (rawValue) {
+      case 1:
+        return PhoneType.work;
+      case 2:
+        return PhoneType.home;
+      case 3:
+        return PhoneType.fax;
+      case 4:
+        return PhoneType.mobile;
+      case 0:
+      default:
+        return PhoneType.unknown;
+    }
+  }
+
   /// The raw phone type value.
   final int rawValue;
 }
