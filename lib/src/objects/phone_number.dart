@@ -5,7 +5,7 @@ class PhoneNumber {
   /// Construct a new [PhoneNumber] instance.
   const PhoneNumber({
     this.number,
-    this.type,
+    this.type = PhoneType.unknown,
   });
 
   /// Create a [PhoneNumber] from the given [data].
@@ -24,5 +24,5 @@ class PhoneNumber {
   final String? number;
 
   /// The type of phone number.
-  final PhoneType? type;
+  final PhoneType type;
 }
