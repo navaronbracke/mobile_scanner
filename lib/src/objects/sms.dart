@@ -3,18 +3,14 @@ class SMS {
   /// Construct a new [SMS] instance.
   const SMS({
     this.message,
-    this.phoneNumber,
+    required this.phoneNumber,
   });
 
   /// Construct a new [SMS] instance from the given [data].
-  factory SMS.fromMap(Map<Object?, Object?>? data) {
-    if (data == null) {
-      return const SMS();
-    }
-
+  factory SMS.fromMap(Map<Object?, Object?> data) {
     return SMS(
       message: data['message'] as String?,
-      phoneNumber: data['phoneNumber'] as String?,
+      phoneNumber: data['phoneNumber'] as String? ?? '',
     );
   }
 
@@ -22,5 +18,5 @@ class SMS {
   final String? message;
 
   /// The phone number which sent the sms.
-  final String? phoneNumber;
+  final String phoneNumber;
 }
