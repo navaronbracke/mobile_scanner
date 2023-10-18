@@ -1,6 +1,7 @@
-import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+import 'dart:ui';
 
-import 'mobile_scanner_method_channel.dart';
+import 'package:mobile_scanner/mobile_scanner_method_channel.dart';
+import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 /// The platform interface for the `mobile_scanner` plugin.
 abstract class MobileScannerPlatform extends PlatformInterface {
@@ -22,6 +23,11 @@ abstract class MobileScannerPlatform extends PlatformInterface {
   static set instance(MobileScannerPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
+  }
+
+  /// Update the scan window to the given [window].
+  Future<void> updateScanWindow(Rect? window) {
+    throw UnimplementedError('updateScanWindow() has not been implemented.');
   }
 
   /// Releases the resources of this mobile scanner.

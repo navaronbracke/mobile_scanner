@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
-import 'mobile_scanner_platform_interface.dart';
+import 'package:mobile_scanner/mobile_scanner_platform_interface.dart';
 
 /// An implementation of [MobileScannerPlatform] that uses method channels.
 class MethodChannelMobileScanner extends MobileScannerPlatform {
@@ -13,5 +13,19 @@ class MethodChannelMobileScanner extends MobileScannerPlatform {
   @visibleForTesting
   final eventChannel = const EventChannel('dev.steenbakker.mobile_scanner/scanner/event');
 
-  // TODO: implement platform interface methods
+  @override
+  Future<void> updateScanWindow(Rect? window) async {
+    List<double>? points;
+
+    if (window != null) {
+      points = [window.left, window.top, window.right, window.bottom];
+    }
+
+    await methodChannel.invokeMethod('updateScanWindow', {'rect': points});
+  }
+
+  @override
+  Future<void> dispose() async {
+    await methodChannel.invokeMethod('stop');
+  }
 }
