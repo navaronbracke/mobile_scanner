@@ -15,6 +15,15 @@ class MobileScannerState {
     this.error,
   });
 
+  /// Create a new [MobileScannerState] instance that is uninitialized.
+  const MobileScannerState.uninitialized(CameraFacing facing)
+      : this(
+          cameraDirection: facing,
+          size: Size.zero,
+          torchState: TorchState.unavaialble,
+          zoomScale: 1.0,
+        );
+
   /// The facing direction of the camera.
   final CameraFacing cameraDirection;
 
