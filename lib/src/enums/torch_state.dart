@@ -7,5 +7,5 @@ enum TorchState {
   on,
 
   /// The current camera does not have a flashlight.
-  unavaialble,
+  unavailable,
 }
