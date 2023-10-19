@@ -9,6 +9,7 @@ class MobileScannerState {
   /// Create a new [MobileScannerState] instance.
   const MobileScannerState({
     required this.cameraDirection,
+    required this.isInitialized,
     required this.size,
     required this.torchState,
     required this.zoomScale,
@@ -19,6 +20,7 @@ class MobileScannerState {
   const MobileScannerState.uninitialized(CameraFacing facing)
       : this(
           cameraDirection: facing,
+          isInitialized: false,
           size: Size.zero,
           torchState: TorchState.unavaialble,
           zoomScale: 1.0,
@@ -29,6 +31,9 @@ class MobileScannerState {
 
   /// The error that occurred while setting up or using the canera.
   final MobileScannerException? error;
+
+  /// Whether the mobile scanner has initialized successfully.
+  final bool isInitialized;
 
   /// The size of the camera output.
   final Size size;
@@ -43,6 +48,7 @@ class MobileScannerState {
   MobileScannerState copyWith({
     CameraFacing? cameraDirection,
     MobileScannerException? error,
+    bool? isInitialized,
     Size? size,
     TorchState? torchState,
     double? zoomScale,
@@ -50,6 +56,7 @@ class MobileScannerState {
     return MobileScannerState(
       cameraDirection: cameraDirection ?? this.cameraDirection,
       error: error,
+      isInitialized: isInitialized ?? this.isInitialized,
       size: size ?? this.size,
       torchState: torchState ?? this.torchState,
       zoomScale: zoomScale ?? this.zoomScale,
