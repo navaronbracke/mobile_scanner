@@ -1,8 +1,11 @@
-/// The state of torch.
+/// The state of the flashlight.
 enum TorchState {
-  /// Torch is off.
+  /// The flashlight is off.
   off,
 
-  /// Torch is on.
+  /// The flashlight is on.
   on,
+
+  /// The current camera does not have a flashlight.
+  unavaialble,
 }
