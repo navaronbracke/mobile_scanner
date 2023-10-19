@@ -1,5 +1,8 @@
 /// This enum defines the different error codes for the mobile scanner.
 enum MobileScannerErrorCode {
+  /// The controller was used after being disposed.
+  controllerDisposed,
+
   /// The controller was used
   /// while it was not yet initialized using [MobileScannerController.start].
   controllerUninitialized,
