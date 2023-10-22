@@ -1,6 +1,9 @@
 import 'dart:ui';
 
+import 'package:mobile_scanner/src/enums/torch_state.dart';
 import 'package:mobile_scanner/src/method_channel/mobile_scanner_method_channel.dart';
+import 'package:mobile_scanner/src/objects/barcode_capture.dart';
+import 'package:mobile_scanner/src/objects/mobile_scanner_options.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 /// The platform interface for the `mobile_scanner` plugin.
@@ -23,6 +26,44 @@ abstract class MobileScannerPlatform extends PlatformInterface {
   static set instance(MobileScannerPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
+  }
+
+  /// Analyze the image at the given file [path].
+  ///
+  /// Returns the barcodes that are found in the image.
+  Future<BarcodeCapture> analyzeImage(String path) async {
+    throw UnimplementedError('analyzeImage() has not been implemented.');
+  }
+
+  /// Initialize the mobile scanner.
+  Future<Map<String, Object?>> initialize(MobileScannerOptions options) {
+    throw UnimplementedError('initialize() has not been implemented.');
+  }
+
+  /// Request camera permissions.
+  ///
+  /// Returns whether the permissions were granted.
+  Future<bool> requestCameraPermission() {
+    throw UnimplementedError('requestCameraPermission() has not been implemented.');
+  }
+
+  /// Reset the zoom scale of the camera to `1.0`.
+  Future<void> resetZoomScale() {
+    throw UnimplementedError('resetZoomScale() has not been implemented.');
+  }
+
+  /// Set the zoom scale of the camera.
+  ///
+  /// The zoom scale is clamped between `0.0` and `1.0`.
+  Future<void> setZoomScale(double zoomScale) {
+    throw UnimplementedError('setZoomScale() has not been implemented.');
+  }
+
+  /// Switch the flashlight to the given state.
+  ///
+  /// Does nothing if the device has no torch.
+  Future<void> setTorchState(TorchState state) async {
+    throw UnimplementedError('setTorchState() has not been implemented.');
   }
 
   /// Update the scan window to the given [window].
