@@ -1,3 +1,8 @@
+## 4.0.2
+
+Bugs fixed:
+* Fixed an issue where the scan window was not updated when its size was changed. (thanks @navaronbracke !)
+
 ## 4.0.1
 Bugs fixed:
 * [iOS] Fixed a crash with a nil capture session when starting the camera. (thanks @navaronbracke !)

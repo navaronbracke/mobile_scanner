@@ -59,6 +59,19 @@ class MobileScanner extends StatefulWidget {
   /// [BoxFit]
   final Rect? scanWindow;
 
+  /// The threshold for updates to the [scanWindow].
+  ///
+  /// If the [scanWindow] would be updated,
+  /// due to new layout constraints for the scanner,
+  /// and the width or height of the new scan window have not changed by this threshold,
+  /// then the scan window is not updated.
+  ///
+  /// It is recommended to set this threshold
+  /// if scan window updates cause performance issues.
+  ///
+  /// Defaults to no threshold for scan window updates.
+  final double scanWindowUpdateThreshold;
+
   /// Only set this to true if you are starting another instance of mobile_scanner
   /// right after disposing the first one, like in a PageView.
   ///
@@ -80,6 +93,7 @@ class MobileScanner extends StatefulWidget {
     this.onScannerStarted,
     this.placeholderBuilder,
     this.scanWindow,
+    this.scanWindowUpdateThreshold = 0.0,
     this.startDelay = false,
     this.overlay,
     super.key,
@@ -198,6 +212,61 @@ class _MobileScannerState extends State<MobileScanner>
 
   Rect? scanWindow;
 
+  /// Calculate the scan window based on the given [constraints].
+  ///
+  /// If the [scanWindow] is already set, this method does nothing.
+  void _maybeUpdateScanWindow(
+    Size textureSize,
+    BoxConstraints constraints,
+  ) {
+    if (widget.scanWindow == null) {
+      return;
+    }
+
+    final Rect newScanWindow = calculateScanWindowRelativeToTextureInPercentage(
+      widget.fit,
+      widget.scanWindow!,
+      textureSize: textureSize,
+      widgetSize: constraints.biggest,
+    );
+
+    // The scan window was never set before.
+    // Set the initial scan window.
+    if (scanWindow == null) {
+      scanWindow = newScanWindow;
+
+      unawaited(_controller.updateScanWindow(scanWindow));
+
+      return;
+    }
+
+    // The scan window did not not change.
+    // The left, right, top and bottom are the same.
+    if (scanWindow == newScanWindow) {
+      return;
+    }
+
+    // The update threshold is not set, allow updating the scan window.
+    if (widget.scanWindowUpdateThreshold == 0.0) {
+      scanWindow = newScanWindow;
+
+      unawaited(_controller.updateScanWindow(scanWindow));
+
+      return;
+    }
+
+    final double dx = (newScanWindow.width - scanWindow!.width).abs();
+    final double dy = (newScanWindow.height - scanWindow!.height).abs();
+
+    // The new scan window has changed enough, allow updating the scan window.
+    if (dx >= widget.scanWindowUpdateThreshold ||
+        dy >= widget.scanWindowUpdateThreshold) {
+      scanWindow = newScanWindow;
+
+      unawaited(_controller.updateScanWindow(scanWindow));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -209,16 +278,8 @@ class _MobileScannerState extends State<MobileScanner>
               return _buildPlaceholderOrError(context, child);
             }
 
-            if (widget.scanWindow != null && scanWindow == null) {
-              scanWindow = calculateScanWindowRelativeToTextureInPercentage(
-                widget.fit,
-                widget.scanWindow!,
-                textureSize: value.size,
-                widgetSize: constraints.biggest,
-              );
+            _maybeUpdateScanWindow(value.size, constraints);
 
-              _controller.updateScanWindow(scanWindow);
-            }
             if (widget.overlay != null) {
               return Stack(
                 alignment: Alignment.center,
