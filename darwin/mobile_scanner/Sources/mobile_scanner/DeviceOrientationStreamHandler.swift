@@ -1,6 +1,5 @@
 //
 //  DeviceOrientationStreamHandler.swift
-//  Pods
 //
 //  Created by Julian Steenbakker on 21/04/2025.
 //
