@@ -81,6 +81,8 @@ public class MobileScannerPlugin: NSObject, FlutterPlugin, FlutterStreamHandler,
         let orientationEvent = FlutterEventChannel(name:
                                             "dev.steenbakker.mobile_scanner/scanner/deviceOrientation", binaryMessenger: messenger)
         orientationEvent.setStreamHandler(DeviceOrientationStreamHandler())
+
+        registrar.addSceneDelegate(instance)
 #endif
     }
     
@@ -1330,4 +1332,8 @@ extension UIDeviceOrientation {
         }
     }
 }
+#endif
+
+#if os(iOS)
+extension MobileScannerPlugin: FlutterSceneLifeCycleDelegate {}
 #endif
